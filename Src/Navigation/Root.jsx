@@ -4,10 +4,10 @@ import { userContext } from '../Context/Context';
 import Appointment from '../Screens/Appointment';
 const Stack = createNativeStackNavigator();
 export default function Root() {
-    const { user } = userContext()
+    const { user, isValiduser } = userContext()
     return (
         <Stack.Navigator>
-            {!user.email ? <Stack.Screen name="Login" component={Login} options={{
+            {!isValiduser ? <Stack.Screen name="Login" component={Login} options={{
                 headerShown: false
             }} /> :
                 <Stack.Screen name="Appointment" component={Appointment} options={{

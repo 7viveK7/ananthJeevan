@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { userContext } from '../Context/Context';
 
 const Login = () => {
-    const { user, setUser } = userContext()
+    const { user, setUser, setIsvaliduser, AuthenticatedUser } = userContext()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
@@ -22,8 +22,24 @@ const Login = () => {
     };
 
     const handleSignUp = () => {
-        setUser({ email, password })
-        console.log({ user })
+        // setUser({ email, password })
+        // console.log({ user })
+        const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        console.log({ user, AuthenticatedUser })
+        if (reg.test(email.trim()) === true) {
+
+            if (email.trim().toLowerCase() === AuthenticatedUser.email.toLowerCase() && password === AuthenticatedUser.password) {
+                setIsvaliduser(true)
+            }
+            else {
+                alert("Kindly furnish accurate details for the sign-in process.")
+            }
+
+        }
+        else {
+            alert("please enter a valid email")
+        }
+
     };
 
     const handleAnonymousSignUp = () => {

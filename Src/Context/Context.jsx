@@ -3,14 +3,18 @@ import React, { useContext, useEffect, useState } from 'react';
 const AppContext = React.createContext();
 
 function AppProvider({ children }) {
+    const [isValiduser, setIsvaliduser] = useState(false)
     const [user, setUser] = useState({
         email: '',
         password: ''
     })
-
+    const AuthenticatedUser = {
+        email: 'vivek@jeevan.com',
+        password: 'ViveK@760'
+    }
 
     const value = {
-        user, setUser
+        user, setUser, AuthenticatedUser, isValiduser, setIsvaliduser
     };
 
     return (

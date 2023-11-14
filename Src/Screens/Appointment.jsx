@@ -6,10 +6,10 @@ import { userContext } from '../Context/Context';
 import DropdownComponent from '../Components/DropDown';
 
 const Appointment = () => {
-    const { user, setUser } = userContext()
+    const { user, setIsvaliduser } = userContext()
 
     const handleLogout = () => {
-        setUser({ email: '', password: '' })
+        setIsvaliduser(false)
 
     };
 
